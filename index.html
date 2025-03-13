@@ -23,14 +23,15 @@
                 return;
             }
 
-            fetch("https://script.google.com/macros/s/AKfycbxBQI1SVBepWQgenjJh0tzSgQrnouvHH1BnHcwaFvjxqx_CvKIK-_xE--uLG-i6HJUu/exec", {  // Replace with your Google Script URL
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ userInput })
-            })
-            .then(response => response.json())
-            .then(data => alert(data.message))
-            .catch(error => console.error("Error:", error));
+fetch("https://script.google.com/macros/s/AKfycbxs2DvNAg10Dc5Q1h-sy-SOULO2VIIKcrxYA1HreWW_96NWsLm19bYmkrJh9xp-5k7k/exec", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userInput })
+})
+.then(response => response.json()) 
+.then(data => alert(data.message)) 
+.catch(error => console.error("Error:", error));
+
         }
     </script>
 
