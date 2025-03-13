@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Data in Google Sheets</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        input, button { padding: 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+
+    <h2>Enter Your Data</h2>
+    <input type="text" id="userInput" placeholder="Type something..." required>
+    <button onclick="sendData()">Submit</button>
+
+    <script>
+        function sendData() {
+            let userInput = document.getElementById("userInput").value;
+            if (!userInput) {
+                alert("Please enter some data!");
+                return;
+            }
+
+            fetch("https://script.google.com/macros/s/AKfycbxBQI1SVBepWQgenjJh0tzSgQrnouvHH1BnHcwaFvjxqx_CvKIK-_xE--uLG-i6HJUu/exec", {  // Replace with your Google Script URL
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ userInput })
+            })
+            .then(response => response.json())
+            .then(data => alert(data.message))
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+
+</body>
+</html>
